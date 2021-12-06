@@ -14,13 +14,6 @@ class Solution {
                 odd++;
             }
         }
-        if(even>odd)
-        {
-            return odd;
-        }
-        else
-        {
-            return even;
-        }
+        return Math.min(odd,even);
     }
 }
