@@ -1,44 +1,44 @@
 class Solution {
-    public void nextPermutation(int[] arr) {
-        int n=arr.length;
-        int j=n-2;
-        while(j>=0 && arr[j+1]<=arr[j])
+    public void reverse(int l,int r,int[] nums)
+    {
+        while(l<=r)
         {
-            j--;
+            int tmp=nums[l];
+            nums[l]=nums[r];
+            nums[r]=tmp;
+            l++;
+            r--;
         }
-        if(j==-1)
+    }
+    public void nextPermutation(int[] nums) {
+        int n=nums.length;
+        int index=n-2;
+        while(index>=0)
         {
-            Arrays.sort(arr);
-            return;
-        }
-        for(int i=n-1;i>j;i--)
-        {
-            if(arr[i]>arr[j])
+            if(nums[index]>=nums[index+1])
             {
-                int tmp=arr[i];
-                arr[i]=arr[j];
-                arr[j]=tmp;
+                index--;
+            }
+            else
+            {
                 break;
             }
         }
-        //System.out.println(j);
-        ArrayList<Integer>l=new ArrayList<>();
-        for(int i=j+1;i<n;i++)
+        if(index>=0)
         {
-            l.add(arr[i]);
+            for(int i=n-1;i>=index+1;i--)
+            {
+                if(nums[i]>nums[index])
+                {
+                    int tmp=nums[index];
+                    nums[index]=nums[i];
+                    nums[i]=tmp;
+                    break;
+                
+                }
+            }
         }
-        Collections.sort(l);
-        /*for(int i=0;i<l.size();i++)
-        {
-            System.out.print(l.get(i)+" ");
-        }*/
-        int index=0;
-        for(int i=j+1;i<n;i++)
-        {
-            arr[i]=l.get(index);
-            index++;
-        }
-        
+        reverse(index+1,n-1,nums);
         
     }
 }
