@@ -16,15 +16,13 @@ class Solution {
         }
         return (int)ans;
     }
-    public int rev(int n){
-        String s=Integer.toString(n);
-        String rev="";
-        int r=s.length()-1;
-        while(r>=0)
-        {
-            rev=rev+s.charAt(r);
-            r--;
+    public int rev(int x){
+        int rev = 0;
+        while (x != 0) {
+            int pop = x % 10;
+            x /= 10;
+            rev = rev * 10 + pop;
         }
-        return Integer.parseInt(rev);
+        return rev;
     }
 }
