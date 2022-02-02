@@ -14,15 +14,8 @@ class Solution {
             }
             while(i<n && sum>=target)
             {
-                if(j==n)
-                {
-                     ans=Math.min(ans,j-i);
-                }
-               else
-               {
                    // System.out.println(i+" "+j);
-                    ans=Math.min(ans,j-i);
-               }
+                ans=Math.min(ans,j-i);
                 sum=sum-nums[i];
                 // System.out.println(sum);
                 i++;
