@@ -40,4 +40,9 @@ Since all subarrays are distinct, the total number of subarrays satisfying all t
 	<li><code>1 &lt;= nums[i], p &lt;= 200</code></li>
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong></p>
+
+<p>Can you solve this problem in O(n<sup>2</sup>) time complexity?</p>
 </div>
