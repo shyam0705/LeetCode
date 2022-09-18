@@ -1,56 +1,35 @@
 class Solution {
     public int trap(int[] arr) {
         int n=arr.length;
-        int[] left=new int[n];
-        int[] right=new int[n];
-        left[0]=-1;
-        right[n-1]=-1;
-        
-        //build left
-        int max=arr[0];
-        for(int i=1;i<n;i++)
-        {
-           if(arr[i]>=max)
-           {
-               max=arr[i];
-               left[i]=-1;
-           }
-           else
-           {
-               left[i]=max;
-           }
-        }
-        
-        
-        //build right
-        max=arr[n-1];
-        for(int i=n-2;i>=0;i--)
-        {
-           if(arr[i]>=max)
-           {
-               max=arr[i];
-               right[i]=-1;
-           }
-           else
-           {
-               right[i]=max;
-           }
-        }
-        
-        
-    
-        //cal height for every index
+        if(n<=2)
+            return 0;
         int ans=0;
-        for(int i=0;i<n;i++)
+        int left_max=arr[0];
+        int right_max=arr[n-1];
+        int l=1;
+        int r=n-2;
+        while(l<=r)
         {
-            if(left[i]!=-1 && right[i]!=-1)
+            if(left_max>right_max)
             {
+                int h=right_max-arr[r];
                 
-                if(left[i]!=-1 && right[i]!=-1)
-                {
-                    int height=Math.min(right[i],left[i])-arr[i];
-                    ans=ans+height;
-                }
+                if(h>0)
+                    ans=ans+h;
+                else
+                    right_max=arr[r];
+                
+                r--;
+            }
+            else
+            {
+                int h=left_max-arr[l];
+                if(h>0)
+                    ans=ans+h;
+                else
+                    left_max=arr[l];
+                
+                l++;
             }
         }
         return ans;
