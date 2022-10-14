@@ -2,22 +2,28 @@ class SmallestInfiniteSet {
 
     
     TreeSet<Integer>ts;
+    int current=1;
     public SmallestInfiniteSet() {
         ts=new TreeSet<>();
-        for(int i=1;i<=1000;i++)
-        {
-            ts.add(i);
-        }
+       
     }
     
     public int popSmallest() {
-        int ans=ts.first();
-        ts.remove(ans);
-        return ans;
+        if(ts.isEmpty())
+        {
+            return current++;
+        }
+        else
+        {
+            int ans=ts.first();
+            ts.remove(ans);
+            return ans;
+        }
+        
     }
     
     public void addBack(int num) {
-        if(!ts.contains(num))
+        if(num<current)
             ts.add(num);
     }
 }
