@@ -15,20 +15,21 @@ class Solution {
         {
             char[] sorted_arr=strs[i].toCharArray();
             Arrays.sort(sorted_arr);
-            String tmp="";
+            StringBuilder tmp=new StringBuilder();
             for(int j=0;j<sorted_arr.length;j++)
             {
-                tmp+=sorted_arr[j];
+                tmp.append(sorted_arr[j]);
             }
-            if(mp.containsKey(tmp))
+            String a=tmp.toString();
+            if(mp.containsKey(a))
             {
-                mp.get(tmp).add(strs[i]);
+                mp.get(a).add(strs[i]);
             }
             else
             {
                 ArrayList<String>l=new ArrayList<>();
                 l.add(strs[i]);
-                mp.put(tmp,l);
+                mp.put(a,l);
             }
         }
         List<List<String>>ans=new ArrayList<>();
